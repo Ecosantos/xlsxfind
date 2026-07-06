@@ -18,4 +18,8 @@ Uma função em R desenvolvida para realizar buscas recursivas de termos especí
 Você não precisa baixar ou clonar o repositório inteiro. Pode carregar a função diretamente no seu console do R utilizando o comando `source()` com o link do script bruto (*raw*):
 
 ```r
-source("[https://raw.githubusercontent.com/ecosantos/xlsxfind/main/xlsxfind.R](https://raw.githubusercontent.com/ecosantos/xlsxfind/main/xlsxfind.R)")
+source("https://raw.githubusercontent.com/ecosantos/xlsxfind/main/xlsxfind.R")
+xlsxfind_help()
+xlsxfind("TERMO AQUI")
+```
+
