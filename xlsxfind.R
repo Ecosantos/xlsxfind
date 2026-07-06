@@ -67,29 +67,36 @@ xlsxfind <- function(termo = NULL, nivel = 99, exclude = "NADA", match = "exact"
   }
 }
 
-# --- FUNÇÃO DE AJUDA OCULTA ---
+# --- FUNÇÃO DE AJUDA E DIAGNÓSTICO ---
+
 xlsxfind_help <- function() {
-  cat("\n", strrep("=", 80), "\n")
-  cat("🚀 Função 'xlsxfind' - Ajuda e Instruções\n")
-  cat("Autor: Gabriel Santos | GitHub: https://github.com/ecosantos/xlsxfind\n")
-  cat(strrep("=", 80), "\n\n")
-
-  cat("📢 CRÉDITOS:\n")
-  cat("• Use à vontade, mas não se esqueça de manter os créditos ao autor Gabriel Santos.\n\n")
-
-  cat("💡 EXEMPLOS DE USO NO R:\n\n")
-  cat("1. Busca simples (padrão: exata, ignorando maiúsculas/minúsculas):\n")
-  cat("   xlsxfind(\"TERMO\")\n\n")
-  cat("2. Buscar limitando a profundidade das pastas (ex: até 2 níveis abaixo):\n")
-  cat("   xlsxfind(\"TERMO\", nivel = 2)\n\n")
-  cat("3. Buscar ignorando caminhos/pastas específicos:\n")
-  cat("   xlsxfind(\"TERMO\", exclude = \"NOME_PASTA\")\n\n")
-  cat("4. Busca com distinção de maiúsculas/minúsculas:\n")
-  cat("   xlsxfind(\"TERMO\", case_sensitive = TRUE)\n\n")
-  cat("5. Busca parcial (estilo 'contém'):\n")
-  cat("   xlsxfind(\"TERMO\", match = \"partial\")\n")
-  cat(strrep("-", 80), "\n\n")
-}
+   cat("\n", strrep("=", 80), "\n")
+   cat("🚀 Função 'xlsxfind' - Ajuda e Instruções\n")
+   cat("Autor: Gabriel Santos | GitHub: https://github.com/ecosantos/xlsxfind\n")
+   cat(strrep("=", 80), "\n\n")
+   # --- VERIFICAÇÃO INICIAL DE ARQUIVOS NA PASTA ---
+   arquivos_verificacao <- list.files(pattern = "\\.(xlsx|xlsm)$", recursive = TRUE)
+   if (length(arquivos_verificacao) == 0) {
+     cat("⚠️  Status Atual: Você NÃO tem arquivos .xlsx ou .xlsm na pasta atual ou subpastas.\n")
+   } else {
+     cat(sprintf("✨ Status Atual: Sucesso! Foram detectados %d arquivo(s) Excel na pasta. Pronto para buscar!\n", length(arquivos_verificacao)))
+   }
+   cat(strrep("-", 80), "\n\n")
+   cat("📢 CRÉDITOS:\n")
+   cat("• Use à vontade, mas não se esqueça de manter os créditos ao autor Gabriel Santos.\n\n")
+   cat("💡 EXEMPLOS DE USO NO R:\n\n")
+   cat("1. Busca simples (padrão: exata, ignorando maiúsculas/minúsculas):\n")
+   cat("   xlsxfind(\"TERMO\")\n\n")
+   cat("2. Buscar limitando a profundidade das pastas (ex: até 2 níveis abaixo):\n")
+   cat("   xlsxfind(\"TERMO\", nivel = 2)\n\n")
+   cat("3. Buscar ignorando caminhos/pastas específicos:\n")
+   cat("   xlsxfind(\"TERMO\", exclude = \"NOME_PASTA\")\n\n")
+   cat("4. Busca com distinção de maiúsculas/minúsculas (Case Sensitive ligado):\n")
+   cat("   xlsxfind(\"TERMO\", case_sensitive = TRUE)\n\n")
+   cat("5. Busca parcial (estilo 'contém'):\n")
+   cat("   xlsxfind(\"TERMO\", match = \"partial\")\n")
+   cat(strrep("=", 80), "\n\n")
+ }
 
 # --- MENSAGEM DISCRETA DE CARREGAMENTO (Apenas uma linha no console) ---
 message("✔️  Função 'xlsxfind' carregada com sucesso! Digite `xlsxfind()` sem argumentos para ver as instruções de uso.")
